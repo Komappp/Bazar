@@ -19,11 +19,11 @@ class Command(BaseCommand):
         data_clean: List = data[0]['regions']
         for region in data_clean:
             for city in region['cities']:
-                print(city['name'])
-                # city_model = City(
-                #     name=city['name'],
-                #     lat=city['lat'],
-                #     lng=city['lng'],
-                #     region=region['name']
-                # )
-                # city_model.save()
+                city_model = City(
+                    name=city['name'],
+                    lat=city['lat'],
+                    lng=city['lng'],
+                    region=region['name']
+                )
+                city_model.save()
+        print('Данные загружены в базу')

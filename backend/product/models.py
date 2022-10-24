@@ -51,6 +51,8 @@ class Products(models.Model):
     )
     city = models.ForeignKey(
         City,
+        blank=True,
+        null=True,
         on_delete=models.SET_NULL)
     description = models.TextField(verbose_name='Описание товара')
     price = models.PositiveIntegerField()
