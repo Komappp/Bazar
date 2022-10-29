@@ -5,6 +5,16 @@ from django.db.models import UniqueConstraint
 User = get_user_model()
 
 
+class Region(models.Model):
+    name = models.CharField(
+        verbose_name='Название региона',
+        max_length=70
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class City(models.Model):
     # REGION_CHOICES = [
     #     ('MK', 'Минская'),
@@ -18,7 +28,10 @@ class City(models.Model):
         verbose_name='Название города',
         max_length=50
     )
-    region = models.CharField(max_length=20)
+    region = models.ForeignKey(
+        Region,
+        on_delete=models.CASCADE
+    )
     lat = models.FloatField()
     lng = models.FloatField()
 
